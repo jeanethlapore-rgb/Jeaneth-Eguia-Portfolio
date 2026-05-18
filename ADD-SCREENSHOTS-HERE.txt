@@ -1,0 +1,9 @@
+Add your Xero screenshot images to this folder with these exact filenames:
+
+- business-snapshot.png
+- xero-dashboard.png
+- bank-reconciled.png
+- reconcile-screen.png
+- account-transactions.png
+
+See README.md for full instructions.

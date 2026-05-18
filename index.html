@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jeaneth L. Eguia, CB — Certified Bookkeeper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #0f2340;
+      --navy-mid: #1a3a5c;
+      --teal: #2a9d8f;
+      --teal-light: #3bbfb0;
+      --gold: #e9c46a;
+      --cream: #faf8f4;
+      --text: #1a1a2e;
+      --muted: #6b7280;
+      --white: #ffffff;
+      --card-bg: #ffffff;
+      --border: #e5e7eb;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(15, 35, 64, 0.97);
+      backdrop-filter: blur(10px);
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1rem 4rem;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold); font-size: 1.2rem; font-weight: 700;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.8); text-decoration: none;
+      font-size: 0.875rem; font-weight: 500; letter-spacing: 0.05em;
+      text-transform: uppercase; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1e4d6b 100%);
+      display: flex; align-items: center;
+      padding: 8rem 4rem 4rem;
+      position: relative; overflow: hidden;
+    }
+    .hero-inner {
+      display: flex; align-items: center; gap: 4rem;
+      max-width: 1100px; width: 100%; position: relative; z-index: 1;
+    }
+    .hero-photo-wrap {
+      flex-shrink: 0;
+      width: 280px; height: 320px;
+      border-radius: 16px; overflow: hidden;
+      border: 3px solid rgba(42,157,143,0.5);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 6px rgba(42,157,143,0.1);
+      position: relative;
+    }
+    .hero-photo-wrap::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(15,35,64,0.3) 0%, transparent 50%);
+    }
+    .hero-photo-wrap img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -50%; right: -20%;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(42,157,143,0.15) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -30%; left: -10%;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(233,196,106,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-content { max-width: 620px; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(42,157,143,0.2); border: 1px solid rgba(42,157,143,0.4);
+      color: var(--teal-light); padding: 0.4rem 1rem; border-radius: 100px;
+      font-size: 0.8rem; font-weight: 500; letter-spacing: 0.08em;
+      text-transform: uppercase; margin-bottom: 1.5rem;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.5rem; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--white); line-height: 1.15; margin-bottom: 0.5rem;
+    }
+    .hero h1 em { color: var(--gold); font-style: italic; }
+    .hero-sub {
+      font-size: 1.1rem; color: rgba(255,255,255,0.7);
+      margin-bottom: 1.5rem; font-weight: 300;
+    }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-bottom: 2rem; }
+    .hero-tag {
+      background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85); padding: 0.35rem 0.9rem;
+      border-radius: 6px; font-size: 0.8rem;
+    }
+    .hero-quote {
+      font-family: 'Playfair Display', serif;
+      font-style: italic; color: var(--gold);
+      font-size: 1.1rem; margin-bottom: 2rem;
+      border-left: 3px solid var(--teal); padding-left: 1rem;
+    }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--teal); color: var(--white);
+      padding: 0.85rem 2rem; border-radius: 8px;
+      text-decoration: none; font-weight: 600; font-size: 0.95rem;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); }
+    .btn-outline {
+      border: 1px solid rgba(255,255,255,0.3); color: var(--white);
+      padding: 0.85rem 2rem; border-radius: 8px;
+      text-decoration: none; font-weight: 500; font-size: 0.95rem;
+      transition: all 0.2s; display: inline-block;
+    }
+    .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* ── SECTIONS ── */
+    section { padding: 5rem 4rem; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 600; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--teal); margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.5rem);
+      color: var(--navy); margin-bottom: 1rem; line-height: 1.2;
+    }
+    .section-desc { color: var(--muted); max-width: 560px; margin-bottom: 3rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+
+    /* ── STATS ── */
+    .stats-bar {
+      background: var(--navy);
+      padding: 2.5rem 4rem;
+    }
+    .stats-grid {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.2rem; font-weight: 700; color: var(--gold);
+    }
+    .stat-label { color: rgba(255,255,255,0.6); font-size: 0.85rem; margin-top: 0.25rem; }
+
+    /* ── SERVICES ── */
+    .services-section { background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .service-card {
+      border: 1px solid var(--border); border-radius: 12px;
+      padding: 2rem; transition: all 0.25s;
+      position: relative; overflow: hidden;
+    }
+    .service-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: var(--teal); transform: scaleX(0);
+      transition: transform 0.3s; transform-origin: left;
+    }
+    .service-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-3px); }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .service-title { font-weight: 600; color: var(--navy); margin-bottom: 0.5rem; font-size: 1.05rem; }
+    .service-desc { color: var(--muted); font-size: 0.9rem; line-height: 1.6; }
+
+    /* ── XERO DEMO ── */
+    .xero-section { background: var(--cream); }
+    .demo-intro {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+      border-radius: 16px; padding: 3rem;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+      align-items: center; margin-bottom: 3rem;
+    }
+    .demo-intro-text h3 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white); font-size: 1.6rem; margin-bottom: 1rem;
+    }
+    .demo-intro-text p { color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.7; margin-bottom: 1rem; }
+    .demo-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .demo-tag {
+      background: rgba(42,157,143,0.2); border: 1px solid rgba(42,157,143,0.3);
+      color: var(--teal-light); padding: 0.3rem 0.8rem;
+      border-radius: 6px; font-size: 0.78rem; font-weight: 500;
+    }
+    .demo-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .demo-stat {
+      background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px; padding: 1.2rem; text-align: center;
+    }
+    .demo-stat-val {
+      font-family: 'Playfair Display', serif;
+      color: var(--gold); font-size: 1.5rem; font-weight: 700;
+    }
+    .demo-stat-label { color: rgba(255,255,255,0.6); font-size: 0.8rem; margin-top: 0.3rem; }
+
+    /* Screenshots gallery */
+    .screenshots-title {
+      font-weight: 600; color: var(--navy); font-size: 1.1rem;
+      margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .screenshots-title::before { content: '📸'; }
+    .screenshots-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .screenshot-card {
+      border-radius: 10px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--white);
+      transition: all 0.25s; cursor: pointer;
+    }
+    .screenshot-card:hover { transform: translateY(-4px); box-shadow: 0 12px 35px rgba(0,0,0,0.12); }
+    .screenshot-img {
+      width: 100%; height: 200px; object-fit: cover;
+      background: linear-gradient(135deg, var(--navy-mid), var(--teal));
+      display: flex; align-items: center; justify-content: center;
+      color: white; font-size: 2.5rem;
+    }
+    .screenshot-label {
+      padding: 0.75rem 1rem;
+      font-size: 0.85rem; font-weight: 500; color: var(--navy);
+    }
+    .screenshot-sub { padding: 0 1rem 0.75rem; font-size: 0.78rem; color: var(--muted); }
+
+    /* Reports grid */
+    .reports-title {
+      font-weight: 600; color: var(--navy); font-size: 1.1rem;
+      margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .reports-title::before { content: '📄'; }
+    .reports-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .report-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.25rem;
+      display: flex; align-items: center; gap: 1rem;
+      transition: all 0.2s; text-decoration: none;
+    }
+    .report-card:hover { border-color: var(--teal); box-shadow: 0 4px 15px rgba(42,157,143,0.1); }
+    .report-icon {
+      width: 44px; height: 44px; border-radius: 8px;
+      background: linear-gradient(135deg, var(--teal), var(--teal-light));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; flex-shrink: 0;
+    }
+    .report-name { font-weight: 600; color: var(--navy); font-size: 0.9rem; }
+    .report-type { font-size: 0.78rem; color: var(--muted); }
+    .report-check { margin-left: auto; color: var(--teal); font-size: 1rem; }
+
+    /* What I demonstrated */
+    .demo-skills {
+      background: var(--white); border-radius: 12px;
+      border: 1px solid var(--border); padding: 2rem; margin-top: 2rem;
+    }
+    .demo-skills h4 {
+      font-weight: 600; color: var(--navy); margin-bottom: 1.25rem;
+      font-size: 1rem;
+    }
+    .skills-checklist {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem;
+      list-style: none;
+    }
+    .skills-checklist li {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.88rem; color: var(--text);
+    }
+    .skills-checklist li::before {
+      content: '✓'; color: var(--teal); font-weight: 700;
+      flex-shrink: 0; margin-top: 0.05rem;
+    }
+
+    /* ── EXPERIENCE ── */
+    .experience-section { background: var(--white); }
+    .timeline { display: flex; flex-direction: column; gap: 1.5rem; }
+    .timeline-item {
+      display: grid; grid-template-columns: 180px 1fr;
+      gap: 2rem; align-items: start;
+    }
+    .timeline-date {
+      font-size: 0.85rem; color: var(--teal); font-weight: 600;
+      padding-top: 0.25rem;
+    }
+    .timeline-card {
+      background: var(--cream); border: 1px solid var(--border);
+      border-radius: 10px; padding: 1.5rem;
+    }
+    .timeline-role { font-weight: 600; color: var(--navy); font-size: 1rem; }
+    .timeline-company { color: var(--muted); font-size: 0.875rem; margin-bottom: 0.75rem; }
+    .timeline-bullets { list-style: none; }
+    .timeline-bullets li {
+      font-size: 0.88rem; color: var(--text); padding: 0.2rem 0;
+      padding-left: 1rem; position: relative;
+    }
+    .timeline-bullets li::before {
+      content: '—'; position: absolute; left: 0; color: var(--teal);
+    }
+
+    /* ── SKILLS ── */
+    .skills-section { background: var(--cream); }
+    .skills-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .skill-group {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 12px; padding: 1.75rem;
+    }
+    .skill-group-title {
+      font-weight: 600; color: var(--navy); font-size: 0.95rem;
+      margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;
+    }
+    .skill-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-pill {
+      background: var(--cream); border: 1px solid var(--border);
+      color: var(--text); padding: 0.3rem 0.8rem;
+      border-radius: 100px; font-size: 0.8rem;
+    }
+    .skill-pill.highlight {
+      background: rgba(42,157,143,0.1); border-color: rgba(42,157,143,0.3);
+      color: var(--teal);
+    }
+
+    /* ── EDUCATION ── */
+    .education-section { background: var(--white); }
+    .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .edu-card {
+      border: 1px solid var(--border); border-radius: 12px; padding: 1.75rem;
+      position: relative;
+    }
+    .edu-card.featured { border-color: var(--teal); }
+    .edu-badge {
+      position: absolute; top: 1rem; right: 1rem;
+      background: var(--teal); color: white;
+      font-size: 0.7rem; padding: 0.2rem 0.6rem; border-radius: 4px; font-weight: 600;
+    }
+    .edu-icon { font-size: 1.75rem; margin-bottom: 0.75rem; }
+    .edu-degree { font-weight: 600; color: var(--navy); font-size: 1rem; margin-bottom: 0.25rem; }
+    .edu-school { color: var(--muted); font-size: 0.875rem; margin-bottom: 0.25rem; }
+    .edu-year { color: var(--teal); font-size: 0.8rem; font-weight: 500; }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    }
+    .contact-section .section-title { color: var(--white); }
+    .contact-section .section-desc { color: rgba(255,255,255,0.6); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
+    .contact-item {
+      display: flex; align-items: center; gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .contact-icon {
+      width: 40px; height: 40px; border-radius: 8px;
+      background: rgba(42,157,143,0.2); border: 1px solid rgba(42,157,143,0.3);
+      display: flex; align-items: center; justify-content: center; font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; }
+    .contact-value { color: var(--white); font-size: 0.95rem; font-weight: 500; }
+    .availability-box {
+      background: rgba(42,157,143,0.15); border: 1px solid rgba(42,157,143,0.3);
+      border-radius: 12px; padding: 1.5rem;
+    }
+    .avail-title { color: var(--teal-light); font-weight: 600; margin-bottom: 0.75rem; }
+    .avail-item { color: rgba(255,255,255,0.75); font-size: 0.9rem; margin-bottom: 0.4rem; }
+    .avail-item::before { content: '✓ '; color: var(--teal-light); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080f1a; padding: 2rem 4rem;
+      text-align: center; color: rgba(255,255,255,0.4); font-size: 0.85rem;
+    }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.92); align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 8px; }
+    .lightbox-close {
+      position: fixed; top: 1.5rem; right: 1.5rem;
+      color: white; font-size: 2rem; cursor: pointer; z-index: 1000;
+      background: none; border: none; line-height: 1;
+    }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer-banner {
+      background: rgba(233,196,106,0.08);
+      border: 1px solid rgba(233,196,106,0.25);
+      border-left: 4px solid var(--gold);
+      border-radius: 10px; padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .disclaimer-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .disclaimer-text { font-size: 0.85rem; color: var(--muted); line-height: 1.6; }
+    .disclaimer-text strong { color: var(--navy); display: block; margin-bottom: 0.25rem; font-size: 0.9rem; }
+
+    /* ── MISSING SECTION NOTICE ── */
+    .missing-notice {
+      background: rgba(233,196,106,0.1); border: 1px solid rgba(233,196,106,0.3);
+      border-radius: 10px; padding: 1.25rem 1.5rem; margin-top: 2rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .missing-notice-icon { font-size: 1.25rem; flex-shrink: 0; }
+    .missing-notice-text { font-size: 0.88rem; color: var(--text); }
+    .missing-notice-text strong { color: var(--navy); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      section { padding: 3rem 1.5rem; }
+      .hero { padding: 6rem 1.5rem 3rem; }
+      .hero-inner { flex-direction: column; gap: 2rem; text-align: center; }
+      .hero-photo-wrap { width: 180px; height: 200px; }
+      .hero-tags { justify-content: center; }
+      .hero-ctas { justify-content: center; }
+      .stats-bar { padding: 2rem 1.5rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .services-grid, .screenshots-grid, .reports-grid,
+      .skills-groups, .edu-grid, .contact-grid,
+      .skills-checklist, .demo-stats { grid-template-columns: 1fr; }
+      .demo-intro { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">J. Eguia, CB</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#xero-demo">Xero Demo</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-inner">
+    <div class="hero-photo-wrap">
+      <img src="profile.jpg" alt="Jeaneth L. Eguia, Certified Bookkeeper" />
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">Open to Work · Philippines</div>
+      <h1>Jeaneth <em>Eguia</em></h1>
+      <p class="hero-sub">Certified Bookkeeper · Accounting Professional · Remote-Ready</p>
+      <div class="hero-tags">
+        <span class="hero-tag">Xero Certified</span>
+        <span class="hero-tag">QuickBooks</span>
+        <span class="hero-tag">Accounts Receivable & Payable</span>
+        <span class="hero-tag">Bank Reconciliation</span>
+        <span class="hero-tag">GST Compliance</span>
+        <span class="hero-tag">Fixed Assets</span>
+      </div>
+      <p class="hero-quote">"Clean Books. Confident Decisions."</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get in Touch</a>
+        <a href="#xero-demo" class="btn-outline">View Xero Demo</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stats-grid">
+    <div>
+      <div class="stat-num">6+</div>
+      <div class="stat-label">Reports Generated</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Books Balanced</div>
+    </div>
+    <div>
+      <div class="stat-num">AUD</div>
+      <div class="stat-label">Australian GST Compliant</div>
+    </div>
+    <div>
+      <div class="stat-num">CB</div>
+      <div class="stat-label">Certified Bookkeeper</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div class="container">
+    <p class="section-label">What I Offer</p>
+    <h2 class="section-title">Services</h2>
+    <p class="section-desc">End-to-end bookkeeping services tailored for small business owners and remote teams.</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <div class="service-icon">📒</div>
+        <div class="service-title">Full-Cycle Bookkeeping</div>
+        <p class="service-desc">Recording transactions, managing accounts payable and receivable, and maintaining accurate ledgers from start to finish.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🏦</div>
+        <div class="service-title">Bank Reconciliation</div>
+        <p class="service-desc">Matching bank statement lines with recorded transactions to ensure accuracy and catch discrepancies.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">📊</div>
+        <div class="service-title">Financial Reporting</div>
+        <p class="service-desc">Generating Profit & Loss, Balance Sheet, Trial Balance, and General Ledger reports for informed decision-making.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🧾</div>
+        <div class="service-title">GST & BAS Compliance</div>
+        <p class="service-desc">Coding transactions correctly for Australian GST, tracking GST on income and expenses for BAS lodgment.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">🖥️</div>
+        <div class="service-title">Fixed Asset Management</div>
+        <p class="service-desc">Registering assets, setting depreciation rates, and running monthly depreciation using Xero's fixed asset module.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-icon">⚙️</div>
+        <div class="service-title">Adjusting Journal Entries</div>
+        <p class="service-desc">Prepaid expenses, accruals, supplies adjustments, and month-end journals to ensure accurate period reporting.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- XERO DEMO -->
+<section class="xero-section" id="xero-demo">
+  <div class="container">
+    <p class="section-label">Portfolio Project</p>
+    <h2 class="section-title">Xero Bookkeeping Demo</h2>
+    <p class="section-desc">A full-cycle bookkeeping simulation for an Australian sole trader — recorded from scratch in Xero.</p>
+
+    <!-- Disclaimer -->
+    <div class="disclaimer-banner">
+      <div class="disclaimer-icon">⚠️</div>
+      <div class="disclaimer-text">
+        <strong>Portfolio Disclaimer — Not a Real Client</strong>
+        This is a simulated bookkeeping project created solely for portfolio and demonstration purposes.
+        "Eguia Virtual Bookkeeping Services" is a fictitious business name. All transactions, figures,
+        customer names (Zen Young, Rain Uy), supplier names (Zcove Tech, K Enterprise, LifeSure, Telcom),
+        and financial data are entirely fictional and do not represent any real person, company, or financial activity.
+        No real client data has been used. This demo was built using a Xero free trial account.
+      </div>
+    </div>
+
+    <!-- Intro block -->
+    <div class="demo-intro">
+      <div class="demo-intro-text">
+        <h3>Eguia Virtual Bookkeeping Services</h3>
+        <p>This demo simulates a complete month of bookkeeping (March 2026) for an Australian sole trader using Xero. All transactions were recorded from scratch, adjusting entries applied, depreciation run, accounts reconciled, and financial reports generated and verified.</p>
+        <div class="demo-tags">
+          <span class="demo-tag">Xero</span>
+          <span class="demo-tag">March 2026</span>
+          <span class="demo-tag">Australian Sole Trader</span>
+          <span class="demo-tag">GST Compliant</span>
+          <span class="demo-tag">Accrual Basis</span>
+          <span class="demo-tag">AUD</span>
+        </div>
+      </div>
+      <div class="demo-stats">
+        <div class="demo-stat">
+          <div class="demo-stat-val">$2,080</div>
+          <div class="demo-stat-label">Service Revenue</div>
+        </div>
+        <div class="demo-stat">
+          <div class="demo-stat-val">$1,497</div>
+          <div class="demo-stat-label">Net Profit</div>
+        </div>
+        <div class="demo-stat">
+          <div class="demo-stat-val">$5,548</div>
+          <div class="demo-stat-label">Total Assets</div>
+        </div>
+        <div class="demo-stat">
+          <div class="demo-stat-val">$53.30</div>
+          <div class="demo-stat-label">GST Payable</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Screenshots -->
+    <p class="screenshots-title">Xero Screenshots</p>
+    <div class="screenshots-grid">
+      <div class="screenshot-card" onclick="openLightbox('img1')">
+        <div class="screenshot-img">📊</div>
+        <div class="screenshot-label">Business Snapshot</div>
+        <div class="screenshot-sub">Profit $1,497 · Income $2,080 · Accrual basis</div>
+      </div>
+      <div class="screenshot-card" onclick="openLightbox('img2')">
+        <div class="screenshot-img">🏠</div>
+        <div class="screenshot-label">Xero Dashboard</div>
+        <div class="screenshot-sub">Invoices owed $1,378 · Bills to pay $409.50</div>
+      </div>
+      <div class="screenshot-card" onclick="openLightbox('img3')">
+        <div class="screenshot-img">✅</div>
+        <div class="screenshot-label">Bank Reconciliation</div>
+        <div class="screenshot-sub">Statement balance $3,673.80 · Reconciled</div>
+      </div>
+      <div class="screenshot-card" onclick="openLightbox('img4')">
+        <div class="screenshot-img">🔄</div>
+        <div class="screenshot-label">Reconcile Screen</div>
+        <div class="screenshot-sub">All 9 transactions matched to bank statement</div>
+      </div>
+      <div class="screenshot-card" onclick="openLightbox('img5')">
+        <div class="screenshot-img">📋</div>
+        <div class="screenshot-label">Account Transactions</div>
+        <div class="screenshot-sub">All transactions reconciled · Balance $2,815.80</div>
+      </div>
+      <div class="screenshot-card" style="background:var(--white); border:2px dashed var(--border); display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:140px; gap:0.5rem;">
+        <div style="font-size:2rem; opacity:0.3">+</div>
+        <div style="font-size:0.8rem; color:var(--muted); text-align:center; padding:1rem;">Fixed Asset Register<br><span style="font-size:0.75rem;">Screenshot to be added</span></div>
+      </div>
+    </div>
+
+    <!-- Reports -->
+    <p class="reports-title">Financial Reports Generated</p>
+    <div class="reports-grid">
+      <a class="report-card" href="#" title="Profit and Loss Report">
+        <div class="report-icon">📈</div>
+        <div>
+          <div class="report-name">Profit & Loss</div>
+          <div class="report-type">Net Profit: $1,497.32</div>
+        </div>
+        <div class="report-check">✓</div>
+      </a>
+      <a class="report-card" href="#" title="Balance Sheet Report">
+        <div class="report-icon">⚖️</div>
+        <div>
+          <div class="report-name">Balance Sheet</div>
+          <div class="report-type">Total Assets: $5,548.12</div>
+        </div>
+        <div class="report-check">✓</div>
+      </a>
+      <a class="report-card" href="#" title="Trial Balance Report">
+        <div class="report-icon">🧮</div>
+        <div>
+          <div class="report-name">Trial Balance</div>
+          <div class="report-type">Debits = Credits: $6,453.48</div>
+        </div>
+        <div class="report-check">✓</div>
+      </a>
+      <a class="report-card" href="#" title="General Ledger Report">
+        <div class="report-icon">📒</div>
+        <div>
+          <div class="report-name">General Ledger Detail</div>
+          <div class="report-type">All accounts verified</div>
+        </div>
+        <div class="report-check">✓</div>
+      </a>
+      <a class="report-card" href="#" title="Aged Receivables Report">
+        <div class="report-icon">📥</div>
+        <div>
+          <div class="report-name">Aged Receivables</div>
+          <div class="report-type">A/R: $1,378.00 current</div>
+        </div>
+        <div class="report-check">✓</div>
+      </a>
+      <a class="report-card" href="#" title="Aged Payables Report">
+        <div class="report-icon">📤</div>
+        <div>
+          <div class="report-name">Aged Payables</div>
+          <div class="report-type">A/P: $409.50 current</div>
+        </div>
+        <div class="report-check">✓</div>
+      </a>
+    </div>
+
+    <!-- Skills demonstrated -->
+    <div class="demo-skills">
+      <h4>✅ Skills Demonstrated in This Demo</h4>
+      <ul class="skills-checklist">
+        <li>Recording all transaction types in Xero (invoices, bills, spend money, receive money)</li>
+        <li>GST coding — GST on Income, GST on Expenses, BAS Excluded, GST Free</li>
+        <li>Fixed asset registration and straight-line depreciation (actual days method)</li>
+        <li>Manual journal entries for prepaid insurance and supplies adjustments</li>
+        <li>Bank reconciliation using imported CSV bank statement</li>
+        <li>Accounts Payable and Receivable management</li>
+        <li>Month-end adjusting entries (accrual basis)</li>
+        <li>Generating and interpreting 6 financial reports</li>
+        <li>Verifying Trial Balance (Debits = Credits)</li>
+        <li>Australian sole trader bookkeeping standards</li>
+      </ul>
+    </div>
+
+    <!-- What's missing notice -->
+    <div class="missing-notice">
+      <div class="missing-notice-icon">💡</div>
+      <div class="missing-notice-text">
+        <strong>To complete this portfolio section:</strong> Upload the actual PDF reports to your GitHub repository and update the report card links with the correct file paths (e.g. <code>href="reports/profit-and-loss.pdf"</code>). Also replace the screenshot placeholder cards with actual Xero screenshot images.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience-section" id="experience">
+  <div class="container">
+    <p class="section-label">Background</p>
+    <h2 class="section-title">Experience</h2>
+    <p class="section-desc">Building practical bookkeeping skills through training and hands-on application.</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-date">2026 — Present</div>
+        <div class="timeline-card">
+          <div class="timeline-role">Xero Bookkeeping Demo Project</div>
+          <div class="timeline-company">Eguia Virtual Bookkeeping Services (Portfolio)</div>
+          <ul class="timeline-bullets">
+            <li>Full-cycle bookkeeping simulation for an Australian sole trader</li>
+            <li>Recorded 9 transactions across income, expenses, assets and equity</li>
+            <li>Applied GST coding, fixed asset depreciation, and adjusting journals</li>
+            <li>Reconciled bank account and generated 6 financial reports</li>
+            <li>Verified books balance: Debits = Credits = $6,453.48</li>
+          </ul>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-date">Ongoing</div>
+        <div class="timeline-card">
+          <div class="timeline-role">Bookkeeping Training & Certification</div>
+          <div class="timeline-company">Self-directed Professional Development</div>
+          <ul class="timeline-bullets">
+            <li>Completed Certified Bookkeeper (CB) program</li>
+            <li>Xero platform training — transactions, reconciliation, reporting</li>
+            <li>Australian GST and BAS compliance study</li>
+            <li>Accrual accounting, adjusting entries, financial statement preparation</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills-section" id="skills">
+  <div class="container">
+    <p class="section-label">Capabilities</p>
+    <h2 class="section-title">Skills</h2>
+    <p class="section-desc">A combination of technical bookkeeping skills and software proficiency.</p>
+    <div class="skills-groups">
+      <div class="skill-group">
+        <div class="skill-group-title">🖥️ Software</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">Xero</span>
+          <span class="skill-pill">QuickBooks</span>
+          <span class="skill-pill">Microsoft Excel</span>
+          <span class="skill-pill">Microsoft Word</span>
+          <span class="skill-pill">Google Sheets</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">📚 Bookkeeping</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">Bank Reconciliation</span>
+          <span class="skill-pill highlight">Accounts Receivable</span>
+          <span class="skill-pill highlight">Accounts Payable</span>
+          <span class="skill-pill">Fixed Assets</span>
+          <span class="skill-pill">Payroll</span>
+          <span class="skill-pill">Adjusting Entries</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">📋 Reporting</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">Profit & Loss</span>
+          <span class="skill-pill highlight">Balance Sheet</span>
+          <span class="skill-pill">Trial Balance</span>
+          <span class="skill-pill">General Ledger</span>
+          <span class="skill-pill">Aged Receivables</span>
+          <span class="skill-pill">Aged Payables</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">🇦🇺 Australian Compliance</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">GST Coding</span>
+          <span class="skill-pill">BAS Preparation</span>
+          <span class="skill-pill">GST on Income</span>
+          <span class="skill-pill">GST on Expenses</span>
+          <span class="skill-pill">BAS Excluded</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">🧠 Accounting Concepts</div>
+        <div class="skill-pills">
+          <span class="skill-pill">Accrual Basis</span>
+          <span class="skill-pill">Double-Entry</span>
+          <span class="skill-pill">Prepaid Expenses</span>
+          <span class="skill-pill">Depreciation</span>
+          <span class="skill-pill">Owner's Equity</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="skill-group-title">🌐 Work Setup</div>
+        <div class="skill-pills">
+          <span class="skill-pill highlight">Remote Ready</span>
+          <span class="skill-pill">Detail-Oriented</span>
+          <span class="skill-pill">Organised</span>
+          <span class="skill-pill">Fast Learner</span>
+          <span class="skill-pill">Philippines-based</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="education-section" id="education">
+  <div class="container">
+    <p class="section-label">Qualifications</p>
+    <h2 class="section-title">Education & Certifications</h2>
+    <p class="section-desc">Formal training and professional credentials in bookkeeping and accounting.</p>
+    <div class="edu-grid">
+      <div class="edu-card featured">
+        <div class="edu-badge">Active</div>
+        <div class="edu-icon">🏆</div>
+        <div class="edu-degree">Certified Bookkeeper (CB)</div>
+        <div class="edu-school">Professional Certification</div>
+        <div class="edu-year">Completed</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div class="edu-degree">Bachelor of Science in Accountancy</div>
+        <div class="edu-school">University / College</div>
+        <div class="edu-year">Philippines</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">📗</div>
+        <div class="edu-degree">Xero Bookkeeping Training</div>
+        <div class="edu-school">Self-directed · Xero Platform</div>
+        <div class="edu-year">2026</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">📘</div>
+        <div class="edu-degree">Australian GST & BAS Compliance</div>
+        <div class="edu-school">Self-directed Study</div>
+        <div class="edu-year">2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="container">
+    <p class="section-label" style="color:var(--teal-light)">Get in Touch</p>
+    <h2 class="section-title">Contact</h2>
+    <p class="section-desc">Open to remote bookkeeping roles, freelance projects, and part-time opportunities.</p>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div class="contact-label">Location</div>
+            <div class="contact-value">Philippines (Remote-Ready)</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div class="contact-label">Email</div>
+            <div class="contact-value">your.email@email.com</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">💼</div>
+          <div>
+            <div class="contact-label">LinkedIn</div>
+            <div class="contact-value">linkedin.com/in/jeanetheguia</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🌐</div>
+          <div>
+            <div class="contact-label">Portfolio</div>
+            <div class="contact-value">jeanethlapore-rgb.github.io/Jeaneth-Eguia</div>
+          </div>
+        </div>
+      </div>
+      <div class="availability-box">
+        <div class="avail-title">Available For</div>
+        <div class="avail-item">Remote bookkeeping roles (full-time or part-time)</div>
+        <div class="avail-item">Freelance bookkeeping projects</div>
+        <div class="avail-item">Australian-based clients (GST/BAS familiar)</div>
+        <div class="avail-item">Xero or QuickBooks environments</div>
+        <div class="avail-item">Virtual assistant with bookkeeping duties</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Jeaneth L. Eguia, CB · Certified Bookkeeper · Philippines · Built for portfolio purposes</p>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">×</button>
+  <img id="lightbox-img" src="" alt="Xero Screenshot" />
+</div>
+
+<script>
+  // Map screenshot card IDs to actual image paths
+  // Replace these with your actual screenshot filenames once uploaded to GitHub
+  const images = {
+    img1: 'screenshots/business-snapshot.png',
+    img2: 'screenshots/xero-dashboard.png',
+    img3: 'screenshots/bank-reconciled.png',
+    img4: 'screenshots/reconcile-screen.png',
+    img5: 'screenshots/account-transactions.png',
+  };
+
+  function openLightbox(id) {
+    document.getElementById('lightbox-img').src = images[id] || '';
+    document.getElementById('lightbox').classList.add('open');
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('open');
+  }
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>

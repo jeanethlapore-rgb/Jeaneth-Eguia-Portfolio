@@ -1,0 +1,10 @@
+Add your Xero PDF reports to this folder with these exact filenames:
+
+- profit-and-loss.pdf
+- balance-sheet.pdf
+- trial-balance.pdf
+- general-ledger.pdf
+- aged-receivables.pdf
+- aged-payables.pdf
+
+See README.md for full instructions.
